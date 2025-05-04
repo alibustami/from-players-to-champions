@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="From Players to Champions: a machine-learning framework that fuses player-level and team-level data to predict FIFA World Cup match outcomes.">
+  <meta name="keywords"
+        content="FIFA World Cup, Match Outcome Prediction, Machine Learning, Sports Analytics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Players to Champions</title>
+
+  <!-- (Optional) Google Analytics – remove if you don’t need it -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <!-- Your site-specific JS that handles the navbar toggle, etc. -->
+  <script src="./static/js/index.js"></script>
+
+</head>
+<body>
+
+<!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ NAVIGATION BAR -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+
+    <!-- The “navbar-burger” needs data-target to toggle the matching .navbar-menu -->
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <!-- Match this id with the data-target above -->
+  <div id="navbarMain" class="navbar-menu">
+    <!-- 
+      Place any additional navbar items here if desired, e.g.:
+      <div class="navbar-start">
+        <a class="navbar-item" href="#">Home</a>
+      </div>
+    -->
+  </div>
+</nav>
+
+<!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ TITLE & AUTHORS -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            From Players to Champions:<br>
+            A Generalizable Machine-Learning Approach<br>
+            for Match-Outcome Prediction with Insights from the FIFA World Cup
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://alibustami.github.io/">Ali Al-Bustami</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://zaidghazal.github.io">Zaid Ghazal</a><sup>1</sup>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Michigan - Dearborn</span>
+          </div>
+
+          <!-- ­­­­­­­ PUBLICATION LINKS -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper PDF -->
+              <span class="link-block">
+                <a href="./static/paper/fifa_prediction.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- GitHub -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>GitHub</span>
+                </a>
+              </span>
+            </div>
+          </div>
+          <!-- ­­­­­­­ /PUBLICATION LINKS -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ MAIN CONTENT -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+
+          <!-- ­­­­­ ABSTRACT -->
+          <h2 class="title is-3">Abstract</h2>
+          <p>
+            Accurate prediction of FIFA World Cup match outcomes is valuable to analysts,
+            coaches, bettors, and fans. We introduce a machine-learning framework that fuses
+            <strong>player-level performance metrics</strong> (goals, assists, passing accuracy, tackles, …)
+            with <strong>team-level historical data</strong> to forecast winners. Multi-year information is
+            distilled into year-specific team profiles, dimensionality reduction is applied to
+            control feature explosion, and an <em>ensemble of classifiers</em> is optimized via
+            cross-validation. On the FIFA 2022 World Cup dataset our model outperforms a
+            head-to-head baseline, underscoring the importance of granular player attributes
+            and offering insights into player synergy and strategic match-ups.
+          </p>
+
+          <hr>
+
+          <!-- ­­­­­ PROJECT OVERVIEW -->
+          <h2 class="title is-3">Project Overview</h2>
+          <p>The proposed pipeline (Figure&nbsp;1) comprises:</p>
+          <ul>
+            <li>Feature engineering that aggregates yearly player data into team vectors.</li>
+            <li>Scaling and PCA to combat high-dimensional noise.</li>
+            <li>An ensemble of Logistic Regression, Random Forest, Gradient Boosting,
+                AdaBoost, and k-Nearest Neighbors.</li>
+            <li>Majority voting to yield a single probability of victory for each team.</li>
+          </ul>
+
+          <!-- ­­­­­ FIGURES -->
+          <h2 class="title is-3">Key Figures</h2>
+
+          <h3 class="title is-4">Figure 1 – End-to-End Framework</h3>
+          <figure>
+            <img src="./assets/inference_diagram.png"
+                 alt="Diagram of the predictive pipeline showing data ingestion, preprocessing, model ensemble and majority voting">
+            <figcaption>
+              End-to-end ML framework for match-outcome prediction (adapted from page&nbsp;1 of the paper).
+            </figcaption>
+          </figure>
+
+          <h3 class="title is-4">Figure 2 – Training Pipeline</h3>
+          <figure>
+            <img src="./assets/training_diagram.png"
+                 alt="Block diagram of the training pipeline with feature extraction, PCA, cross-validation and model selection">
+          </figure>
+
+          <h3 class="title is-4">Figure 3 – Performance Comparison</h3>
+          <figure>
+            <img src="./assets/performance_table.png"
+                 alt="Table comparing overall, high-scoring, and low-scoring accuracy versus a baseline">
+          </figure>
+
+          <hr>
+
+          <!-- ­­­­­ REQUIREMENTS -->
+          <!-- <h2 class="title is-3">Requirements</h2>
+          <ul>
+            <li>Python 3.8+</li>
+            <li>scikit-learn, pandas, NumPy, XGBoost</li>
+          </ul>
+
+          <hr> -->
+
+          <!-- ­­­­­ INSTALLATION -->
+          <!-- <h2 class="title is-3">Installation</h2>
+          <ol>
+            <li><code>git clone https://github.com/username/fifa-match-prediction.git</code></li>
+            <li><code>cd fifa-match-prediction</code></li>
+            <li><code>pip install -r requirements.txt</code></li>
+            <li><code>python train.py --config configs/default.yaml</code></li>
+          </ol>
+
+          <hr> -->
+
+          <!-- ­­­­­ USAGE -->
+          <!-- <h2 class="title is-3">Usage</h2>
+          <p>Predict a single match:</p>
+<pre><code>python predict.py \
+  --team_a "Argentina" --team_b "France" \
+  --year 2022 \
+  --checkpoint checkpoints/best_model.pkl
+</code></pre>
+
+          <hr> -->
+
+          <!-- ­­­­­ LICENSE -->
+          <h2 class="title is-3">License</h2>
+          <p>
+            The code and pre-processed datasets are released under the
+            <strong>MIT License</strong>. See the <code>LICENSE</code> file for details.
+          </p>
+
+          <hr>
+
+          <!-- ­­­­­ ACKNOWLEDGMENTS -->
+          <h2 class="title is-3">Acknowledgments</h2>
+          <p>
+            We thank the FIFA data community and prior works on sports analytics for
+            inspiration. This project was supported in part by the University of
+            Michigan-Dearborn ECE and CIS departments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- Example PDF link -->
+      <a class="icon-link" href="./static/paper/fifa_prediction.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <!-- Example GitHub link -->
+      <a class="icon-link" href="#">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template is © <a href="https://nerfies.github.io">nerfies.github.io</a> and
+            distributed under a <a rel="license"
+            href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.
+            Please retain this attribution and remove Google Analytics if you’re not using it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
